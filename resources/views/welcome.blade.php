@@ -3,10 +3,7 @@
 @section('title', 'HDC Events')
 
 @section('content')
-    <h1>algum título</h1>
-    <img src="/img/banner.jpg" alt="Banner">
-    <p>{{ $nome }}</p>
-    @for($i = 0; $i < count($arr); $i ++)
-        <p>{{ $arr[$i] }} - {{ $i }} </p>
-    @endfor
+    @foreach ($events as $event)
+        <p>{{ $event->title }} -- {{$event->description}}</p>    
+    @endforeach
 @endsection
