@@ -24,4 +24,18 @@ class EventController extends Controller
     public function cadastro(){
         return view('events.cadastro');
     }
+    
+    public function store(Request $request){
+        $event = new Event;
+
+        $event->title = $request->title;
+        $event->city = $request->city;
+        $event->private = $request->private;
+        $event->description = $request->description;
+
+        $event->save();
+
+        return redirect('/');
+
+    }
 }
