@@ -85,3 +85,45 @@ footer {
     margin-bottom: 20px;
     text-align: center;
 }
+
+#event-image-container,
+#info-container {
+    margin-top: 30px;
+}
+
+#event-image-container img {
+    border-radius: 10px;
+}
+
+#info-container h1 {
+    font-size: 36px;
+    font-weight: 900;
+}
+
+#info-container p {
+    font-size: 18px;
+    margin: 0;
+    display: flex;
+}
+
+#info-container h3,
+#description-container h3 {
+    font-size: 24px;
+    font-weight: bold;  
+}
+
+#info-container ion-icon {
+    font-size: 24px;
+    color: #5871dd;
+    margin-right: 5px;
+}
+
+.btn-primary {
+  background-color: #F2A340;
+  border: 2px solid #C28008;
+}
+
+.btn-primary:hover {
+  background-color: #C28008;
+  border-color: #C28008;
+}
