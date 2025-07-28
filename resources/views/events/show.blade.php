@@ -7,14 +7,16 @@
         <div class="row">
             <div id="event-image-container" class="col-md-6">
                 <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}" class="img-fluid">
-                <h3>Sobre o evento:</h3>
-                <p class="event-description">{{ $event->description }}</p>
+                <div id="description-container">
+                    <h3>Sobre o evento:</h3>
+                    <p class="event-description">{{ $event->description }}</p>
+                </div>
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $event->title }}</h1>
                 <p class="event-city"><ion-icon name="location-outline"></ion-icon>{{ $event->city }}</p>
                 <p class="evets-participants"><ion-icon name="people-outline"></ion-icon> X Participantes</p>
-                <p class="evets-owner"><ion-icon name="star-outline"></ion-icon> {{ $eventOwner['name']}}</p>
+                <p class="evets-owner"><ion-icon name="star-outline"></ion-icon>{{ $eventOwner['name'] }}</p>
 
                 @if($event->private)
                     <p class="event-private">Este é um evento privado.</p>

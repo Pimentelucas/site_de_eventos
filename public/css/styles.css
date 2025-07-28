@@ -138,3 +138,11 @@ footer {
     list-style-type: none;
     padding: 0;
 }
+
+#description-container {
+    margin-top: 30px;
+}
+
+.dashboard-events-container form {
+    display: inline-block;
+}

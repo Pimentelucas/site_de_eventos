@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -43,7 +44,8 @@ class EventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
         $event->items = $request->items;
-
+        $event->user_id = Auth::user()->id;
+    
 
         if($request->hasFile('image') && $request->file('image')->isValid()) {
 
@@ -70,5 +72,25 @@ class EventController extends Controller
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
 
         return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner]);
+    }
+
+    public function dashboard() {
+        $user = Auth::user();
+
+        $events = $user->events;
+
+        return view('events.dashboard', ['events' => $events]);
+    }
+
+    public function destroy($id) {
+        $event = Event::findOrFail($id);
+
+        if(Auth::user()->id !== $event->user_id) {
+            return redirect('/dashboard')->with('msg', 'Você não tem permissão para excluir este evento!');
+        }
+
+        $event->delete();
+
+        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
     }
 }   
