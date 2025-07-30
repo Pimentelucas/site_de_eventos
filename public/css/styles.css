@@ -71,10 +71,11 @@ header {
 }
 
 footer {
-    text-align: right;
-    border-top: 1px solid #ccc;
-    bottom: 0;
-    padding: 30px;
+  text-align: center;
+  background-color: #353E48;
+  color: #FFF;
+  padding: 30px;
+  width: 100%;
 }
 
 .msg {
@@ -143,12 +144,53 @@ footer {
     margin-top: 30px;
 }
 
+.dashboard-title-container {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.dashboard-events-container th {
+  width: 25%;
+}
+
 .dashboard-events-container form {
-    display: inline-block;
+  display: inline-block;
 }
 
 .img-preview {
     max-width: 100%;
     max-height: 200px;
     margin-top: 10px;
+}
+
+#info-container .already-joined-msg {
+  margin: 15px 0;
+  color: #004085;
+  background-color: #CCE5FF;
+  border: 1px solid #B8DAFF;
+  padding: 10px;
+  width: 275px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+.event-title-link {
+  text-decoration: none;
+  color: #0d6efd; 
+}
+
+.event-title-link:hover {
+  color: #4f77b4; 
 }

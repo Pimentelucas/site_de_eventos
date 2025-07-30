@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '$event->title')
+@section('title', $event->title)
 
 @section('content')
     <div id="event-show-container" class="col-md-10 offset-md-1">
@@ -15,7 +15,7 @@
             <div id="info-container" class="col-md-6">
                 <h1>{{ $event->title }}</h1>
                 <p class="event-city"><ion-icon name="location-outline"></ion-icon>{{ $event->city }}</p>
-                <p class="evets-participants"><ion-icon name="people-outline"></ion-icon> X Participantes</p>
+                <p class="evets-participants"><ion-icon name="people-outline"></ion-icon> {{ count($event->users) }} Participantes</p>
                 <p class="evets-owner"><ion-icon name="star-outline"></ion-icon>{{ $eventOwner['name'] }}</p>
 
                 @if($event->private)
@@ -23,8 +23,15 @@
                 @else
                     <p class="event-public">Este evento é aberto ao público.</p>
                 @endif
-                <a href="#" class="btn btn-primary" id="event-submit">Confirmar presença</a>
-                <a href="/" class="btn btn-secondary">Voltar</a>
+                @if (!$hasUserJoined)
+                    <form action="/events/join/{{ $event->id }}" method="POST" id="event-form">
+                        @csrf
+                        <a href="/events/join/{{ $event->id }}" class="btn btn-primary" id="event-submit" onclick="event.preventDefault(); this.closest('form').submit();">Confirmar presença</a>
+                        <a href="/" class="btn btn-secondary">Voltar</a>
+                    </form> 
+                @else
+                    <p class="already-joined-msg">Você já está participando deste evento!</p>
+                @endif 
                 <h3>O evento conta com:</h3>
                 <ul id="items-list">
                     @foreach($event->items as $item)
